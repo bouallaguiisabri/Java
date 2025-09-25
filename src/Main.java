@@ -46,9 +46,9 @@ class Zoo {
         if (animalCount < animals.length) {
             animals[animalCount] = a;
             animalCount++;
-            System.out.println("✅ Animal ajouté avec succès !");
+            System.out.println("Animal ajouté avec succès !");
         } else {
-            System.out.println("❌ Zoo plein, impossible d'ajouter plus d'animaux !");
+            System.out.println("Zoo plein, impossible d'ajouter plus d'animaux !");
         }
     }
 
