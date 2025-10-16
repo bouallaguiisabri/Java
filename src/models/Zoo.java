@@ -15,49 +15,25 @@ public class Zoo {
 
     public String getName() { return name; }
     public void setName(String name) {
-        if (name == null || name.isBlank()) {
-            throw new IllegalArgumentException("Le nom du zoo ne peut pas être vide !");
-        }
+        if (name == null || name.isBlank()) throw new IllegalArgumentException("Nom du zoo vide !");
         this.name = name;
     }
 
-    public String getCity() { return city; }
-    public void setCity(String city) { this.city = city; }
+    public Animal[] getAnimals() { return animals; }
 
     public boolean addAnimal(Animal a) {
         if (isZooFull()) {
-            System.out.println("Zoo plein, impossible d'ajouter plus d'animaux !");
+            System.out.println("Zoo plein !");
             return false;
         }
         for (int i = 0; i < animalCount; i++) {
             if (animals[i].equals(a)) {
-                System.out.println("Cet animal existe déjà dans le zoo !");
+                System.out.println("Animal déjà présent !");
                 return false;
             }
         }
         animals[animalCount++] = a;
         return true;
-    }
-
-    public boolean isZooFull() {
-        return animalCount >= NBR_CAGES;
-    }
-
-    public void displayAnimals() {
-        if (animalCount == 0) {
-            System.out.println("Aucun animal dans le zoo.");
-            return;
-        }
-        for (Animal a : animals) {
-            if (a != null) System.out.println(" - " + a);
-        }
-    }
-
-    public int searchAnimal(Animal a) {
-        for (int i = 0; i < animalCount; i++) {
-            if (animals[i].equals(a)) return i;
-        }
-        return -1;
     }
 
     public boolean removeAnimal(Animal a) {
@@ -73,17 +49,15 @@ public class Zoo {
         return false;
     }
 
-    public static Zoo comparerZoo(Zoo z1, Zoo z2) {
-        return (z1.animalCount >= z2.animalCount) ? z1 : z2;
-    }
+    public boolean isZooFull() { return animalCount >= NBR_CAGES; }
 
-    @Override
-    public String toString() {
-        return "Zoo{" +
-                "name='" + name + '\'' +
-                ", city='" + city + '\'' +
-                ", nbrCages=" + NBR_CAGES +
-                ", animaux=" + animalCount +
-                '}';
+    public void displayAnimals() {
+        if (animalCount == 0) {
+            System.out.println("Zoo vide.");
+            return;
+        }
+        for (Animal a : animals) {
+            if (a != null) System.out.println(a);
+        }
     }
 }

@@ -1,39 +1,31 @@
 package models;
 
 public class Animal {
-    private String name;
-    private int age;
-    private String family;
-    private boolean isMammal;
+    protected String name;
+    protected int age;
+    protected String family;
+    protected boolean isMammal;
 
+    // Constructeur par défaut
+    public Animal() {
+        this.name = "Inconnu";
+        this.age = 0;
+        this.family = "Inconnue";
+        this.isMammal = false;
+    }
+
+    // Constructeur paramétré
     public Animal(String name, int age, String family, boolean isMammal) {
-        setName(name);
-        setAge(age);
+        this.name = name;
+        this.age = age;
         this.family = family;
         this.isMammal = isMammal;
     }
 
     public String getName() { return name; }
-    public void setName(String name) {
-        if (name == null || name.isBlank()) {
-            throw new IllegalArgumentException("Le nom de l'animal ne peut pas être vide !");
-        }
-        this.name = name;
-    }
-
     public int getAge() { return age; }
-    public void setAge(int age) {
-        if (age < 0) {
-            throw new IllegalArgumentException("L'âge de l'animal ne peut pas être négatif !");
-        }
-        this.age = age;
-    }
-
     public String getFamily() { return family; }
-    public void setFamily(String family) { this.family = family; }
-
     public boolean isMammal() { return isMammal; }
-    public void setMammal(boolean mammal) { isMammal = mammal; }
 
     @Override
     public String toString() {
